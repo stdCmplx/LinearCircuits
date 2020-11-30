@@ -24,6 +24,18 @@ PointsOfCircuit >> addPointName: aString [
 ]
 
 { #category : #accessing }
+PointsOfCircuit >> addPointName: aString value: aDouble [
+
+	self addPoint: ((PointOfCircuit name: aString) value: aDouble)
+]
+
+{ #category : #accessing }
+PointsOfCircuit >> addPointNameValueAsArray: anArray [
+
+	self addPointName: (anArray at: 1) value: (anArray at: 2)
+]
+
+{ #category : #accessing }
 PointsOfCircuit >> addPoints: aCollection [
 
 	aCollection do: [ :each | self addPoint: each ]
@@ -36,6 +48,21 @@ PointsOfCircuit >> addPointsNames: aCollection [
 ]
 
 { #category : #accessing }
+PointsOfCircuit >> addPointsNamesValues: aCollection [
+
+	aCollection do: [ :anArray | self addPointNameValueAsArray: anArray ]
+]
+
+{ #category : #accessing }
+PointsOfCircuit >> getPointName: aString [
+	| index |
+	index := self indexOfPointName: aString.
+	index ~= 0
+		ifTrue: [ ^ points at: index ]
+		ifFalse: [ ^ nil ]
+]
+
+{ #category : #accessing }
 PointsOfCircuit >> hasPointOfName: aString [
 
 	^ self points anySatisfy: [ :each | each name = aString ]
@@ -45,6 +72,16 @@ PointsOfCircuit >> hasPointOfName: aString [
 PointsOfCircuit >> hasPointsOfNames: aCollection [
 
 	^ aCollection allSatisfy:[ :each | self hasPointOfName: each ]
+]
+
+{ #category : #accessing }
+PointsOfCircuit >> indexOfPointName: aString [
+
+	| index |
+	index := 0.
+	points doWithIndex: [ :p :i | (p name = aString)
+		 ifTrue: [ index := i ]].
+	^ index
 ]
 
 { #category : #initialization }
@@ -83,7 +120,34 @@ PointsOfCircuit >> removePoint: aPointOfCircuit [
 { #category : #accessing }
 PointsOfCircuit >> removePointOfName: aString [
 
-
+	| p | " point p to remove"
 	(self hasPointOfName: aString)
-		ifTrue: [ points := points reject: [ :each | each name = aString ] ]
+		ifTrue: [ p := (points select: [ :each | each name = aString ]) at: 1.
+			points := points reject: [ :each | each name = aString ].
+			^ p ]
+		ifFalse: [ ^ nil ]
+		
+]
+
+{ #category : #accessing }
+PointsOfCircuit >> removePointsOfNames: aCollection [
+
+	| pts | " points pts to remove"
+	pts := PointsOfCircuit new.
+	aCollection do: [ :each | (self hasPointOfName: each)
+		ifTrue: [ pts addPoint: (self removePointOfName: each) ] ].
+	(pts numberOfPoints = 0) not ifTrue: [ ^ pts ] ifFalse: [ ^ nil ]
+		
+]
+
+{ #category : #accessing }
+PointsOfCircuit >> setValuePointName: aString value: aDouble [
+	| index pt |
+	index := self indexOfPointName: aString.
+	index ~= 0
+		ifTrue: [ pt := points at: index.
+			pt value: aDouble.
+			points at: index put: pt.
+			^ pt]
+		ifFalse: [ ^ nil ]
 ]
