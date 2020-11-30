@@ -41,6 +41,13 @@ PointOfCircuit class >> name: aString value: aDouble [
 ]
 
 { #category : #accessing }
+PointOfCircuit >> equals: aPointOfCircuit [
+
+	(self sameName: aPointOfCircuit) ifTrue: [ ^ self sameValue: aPointOfCircuit ]
+		ifFalse: [ ^ false ]
+]
+
+{ #category : #accessing }
 PointOfCircuit >> name [
 	^ name
 ]
@@ -53,8 +60,24 @@ PointOfCircuit >> name: aString [
 { #category : #accessing }
 PointOfCircuit >> printOn: aStream [
 
+	| s |
 	super printOn: aStream.
-	aStream nextPutAll: '(', name, ',', value printString, ')'
+	s := '(', name.
+	(value isNil) ifFalse: [ s := s, ',', value printString ].
+	s := s, ')'.
+	aStream nextPutAll: s
+]
+
+{ #category : #accessing }
+PointOfCircuit >> sameName: aPointOfCircuit [
+
+	^ name = aPointOfCircuit name
+]
+
+{ #category : #accessing }
+PointOfCircuit >> sameValue: aPointOfCircuit [
+
+	^ value = aPointOfCircuit value
 ]
 
 { #category : #accessing }
