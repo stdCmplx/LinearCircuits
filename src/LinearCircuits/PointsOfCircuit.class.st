@@ -2,58 +2,59 @@
 The set of the points of an circuit.
 "
 Class {
-	#name : #PointsOfCircuit,
-	#superclass : #Object,
+	#name : 'PointsOfCircuit',
+	#superclass : 'Object',
 	#instVars : [
 		'points'
 	],
-	#category : #LinearCircuits
+	#category : 'LinearCircuits',
+	#package : 'LinearCircuits'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPoint: aPointOfCircuit [
 
 	(self hasPointOfName: aPointOfCircuit name)
 		ifFalse: [ points add: aPointOfCircuit ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPointName: aString [
 
 	self addPoint: (PointOfCircuit name: aString)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPointName: aString value: aDouble [
 
 	self addPoint: ((PointOfCircuit name: aString) value: aDouble)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPointNameValueAsArray: anArray [
 
 	self addPointName: (anArray at: 1) value: (anArray at: 2)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPoints: aCollection [
 
 	aCollection do: [ :each | self addPoint: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPointsNames: aCollection [
 
 	aCollection do: [ :each | self addPointName: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> addPointsNamesValues: aCollection [
 
 	aCollection do: [ :anArray | self addPointNameValueAsArray: anArray ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> getPointName: aString [
 	| index |
 	index := self indexOfPointName: aString.
@@ -62,19 +63,19 @@ PointsOfCircuit >> getPointName: aString [
 		ifFalse: [ ^ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> hasPointOfName: aString [
 
 	^ self points anySatisfy: [ :each | each name = aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> hasPointsOfNames: aCollection [
 
 	^ aCollection allSatisfy:[ :each | self hasPointOfName: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> indexOfPointName: aString [
 
 	| index |
@@ -84,40 +85,40 @@ PointsOfCircuit >> indexOfPointName: aString [
 	^ index
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PointsOfCircuit >> initialize [
 
 	super initialize.
 	points := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> numberOfPoints [
 
 	^ points size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> points [
 	^ points
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> printOn: aStream [
 
 	| s |
 	super printOn: aStream.
-	s := ',' join: (points collect: [ :each | '(', each name, ',', each value printString, ')' ]).
+	s := ',' join: (points collect: [ :each | '(', each name, ',', each value printOn, ')' ]).
 	aStream nextPutAll: '(', s, ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> removePoint: aPointOfCircuit [
 
 	self removePointOfName: aPointOfCircuit name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> removePointOfName: aString [
 
 	| p | " point p to remove"
@@ -129,7 +130,7 @@ PointsOfCircuit >> removePointOfName: aString [
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> removePointsOfNames: aCollection [
 
 	| pts | " points pts to remove"
@@ -140,7 +141,7 @@ PointsOfCircuit >> removePointsOfNames: aCollection [
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointsOfCircuit >> setValuePointName: aString value: aDouble [
 	| index pt |
 	index := self indexOfPointName: aString.

@@ -1,1 +1,1 @@
-Package { #name : #LinearCircuits }
+Package { #name : 'LinearCircuits' }

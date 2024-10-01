@@ -1,10 +1,12 @@
 Class {
-	#name : #PointsOfCircuitTest,
-	#superclass : #TestCase,
-	#category : #'LinearCircuits-Tests'
+	#name : 'PointsOfCircuitTest',
+	#superclass : 'TestCase',
+	#category : 'LinearCircuits-Tests',
+	#package : 'LinearCircuits',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testAddPoint [
 
 	| pt pts |
@@ -17,7 +19,7 @@ PointsOfCircuitTest >> testAddPoint [
 	self assert: pts numberOfPoints equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testAddPointName [
 
 	| pts |
@@ -30,7 +32,7 @@ PointsOfCircuitTest >> testAddPointName [
 	self assert: pts numberOfPoints equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testAddPointNameValue [
 
 	| pts |
@@ -43,7 +45,7 @@ PointsOfCircuitTest >> testAddPointNameValue [
 	self assert: pts numberOfPoints equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testAddPointNameValueAsArray [
 
 	| pts |
@@ -59,7 +61,7 @@ PointsOfCircuitTest >> testAddPointNameValueAsArray [
 	self assert: (pts points at: 2) value = -2.6.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testAddPointsNames [
 
 	| pts |
@@ -67,7 +69,7 @@ PointsOfCircuitTest >> testAddPointsNames [
 	self assert: pts numberOfPoints equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testAddPointsNamesValues [
 
 	| pts |
@@ -84,7 +86,7 @@ PointsOfCircuitTest >> testAddPointsNamesValues [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testGetPointName [
 
 	| pts |
@@ -94,7 +96,7 @@ PointsOfCircuitTest >> testGetPointName [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testHasPointOfName [
 
 	| pts |
@@ -108,7 +110,7 @@ PointsOfCircuitTest >> testHasPointOfName [
 	self assert: (pts hasPointOfName: 'C').
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testHasPointsOfNames [
 
 	| pts |
@@ -119,7 +121,7 @@ PointsOfCircuitTest >> testHasPointsOfNames [
 	self assert: (pts hasPointsOfNames: #('C' 'E' 'A' 'D' 'B')) not.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testIndexOfPointName [
 
 	| pts |
@@ -133,7 +135,7 @@ PointsOfCircuitTest >> testIndexOfPointName [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testNumberOfPoints [
 
 	| pt pts |
@@ -147,7 +149,7 @@ PointsOfCircuitTest >> testNumberOfPoints [
 	self assert: pts numberOfPoints equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testRemovePointOfName [
 
 	| pts |
@@ -165,7 +167,7 @@ PointsOfCircuitTest >> testRemovePointOfName [
 	self assert: (pts hasPointsOfNames: #('A' 'C')).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testRemovePointsOfNames [
 
 	| pts pts2 |
@@ -180,7 +182,7 @@ PointsOfCircuitTest >> testRemovePointsOfNames [
 	self assert: (pts hasPointsOfNames: #('A' 'C')).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointsOfCircuitTest >> testSetValuePointName [
 
 	| pts |

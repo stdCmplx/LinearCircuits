@@ -1,10 +1,12 @@
 Class {
-	#name : #PointOfCircuitTest,
-	#superclass : #TestCase,
-	#category : #'LinearCircuits-Tests'
+	#name : 'PointOfCircuitTest',
+	#superclass : 'TestCase',
+	#category : 'LinearCircuits-Tests',
+	#package : 'LinearCircuits',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointOfCircuitTest >> testCreationIsOk [
 
 	| p1 p2 |
@@ -16,7 +18,7 @@ PointOfCircuitTest >> testCreationIsOk [
 	self assert: p2 value equals: 3.6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointOfCircuitTest >> testEqualsPoint [
 
 	| p1 p2 p3 p4 |
@@ -31,7 +33,7 @@ PointOfCircuitTest >> testEqualsPoint [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointOfCircuitTest >> testSameName [
 
 	| p1 p2 p3 |
@@ -42,7 +44,7 @@ PointOfCircuitTest >> testSameName [
 	self assert: (p1 sameName: p3)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PointOfCircuitTest >> testSameValue [
 
 	| p1 p2 p3 |

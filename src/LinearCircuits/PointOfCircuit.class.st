@@ -18,74 +18,62 @@ To create instances:
 
 "
 Class {
-	#name : #PointOfCircuit,
-	#superclass : #Object,
+	#name : 'PointOfCircuit',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'value'
 	],
-	#category : #LinearCircuits
+	#category : 'LinearCircuits',
+	#package : 'LinearCircuits'
 }
 
-{ #category : #'instance creation' }
-PointOfCircuit class >> name: aString [
-
-	^ self new name: aString;
-		value: 0.0
-]
-
-{ #category : #'instance creation' }
-PointOfCircuit class >> name: aString value: aDouble [
-
-	^ (self name: aString) value: aDouble
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> equals: aPointOfCircuit [
 
 	(self sameName: aPointOfCircuit) ifTrue: [ ^ self sameValue: aPointOfCircuit ]
 		ifFalse: [ ^ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> name: aString [
 	name := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> printOn: aStream [
 
 	| s |
 	super printOn: aStream.
 	s := '(', name.
-	(value isNil) ifFalse: [ s := s, ',', value printString ].
+	(value isNil) ifFalse: [ s := s, ',', value printOn ].
 	s := s, ')'.
 	aStream nextPutAll: s
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> sameName: aPointOfCircuit [
 
 	^ name = aPointOfCircuit name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> sameValue: aPointOfCircuit [
 
 	^ value = aPointOfCircuit value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PointOfCircuit >> value: aDouble [
 	value := aDouble
 ]
